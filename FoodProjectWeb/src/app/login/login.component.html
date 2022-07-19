@@ -1,0 +1,49 @@
+<p>login works!</p>
+<!--<div class="py-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card rounded-0">
+                <div class="Card-header">
+                    <h3 class="mb-0">Login</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form">
+                        <div class="col-md-12">
+                            <label class="form-label" for="floatingInput">UserName</label>
+                            <input type="email" class="form-control"   [(ngModel)]="loginUserData.userName" id="floatingInput" placeholder="Please enter your email">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="floatingPassword">Password</label>
+                            <input type="password" class="form-control" [(ngModel)]="loginUserData.password" id="floatingPassword" placeholder="Password">
+                        </div>
+                        <div class="col-12">
+                            <div class="form-check"></div>
+                            </div>
+                        <button class="btn btn-lg btn-primary" (click)="LoginUser()" type="submit" routerLink="/cart">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<div class="login-wrapper">
+    <form action="" class="form">
+      <h2>Login</h2>
+      <div class="input-group">
+        <input [(ngModel)]="loginUserData.userName" type="text" name="loginUser" id="loginUser" required />
+        <label for="loginUser">User Name</label>
+      </div>
+      <div class="input-group">
+        <input
+          [(ngModel)]="loginUserData.password"
+          type="password"
+          name="loginPassword"
+          id="loginPassword"
+          required
+        />
+        <label for="loginPassword">Password</label>
+      </div>
+      <input (click)="LoginUser()" type="submit" value="Login" class="submit-btn" />
+    </form>
+  </div>
