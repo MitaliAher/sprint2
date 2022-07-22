@@ -15,6 +15,7 @@ import { FinalorderComponent } from './finalorder/finalorder.component';
 import { AdashboardComponent } from './adashboard/adashboard.component';
 import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
 import { AddfoodadminComponent } from './addfoodadmin/addfoodadmin.component';
+import { FoodComponent } from './food/food.component';
 const routes: Routes = [
   {
     path: 'home',
@@ -76,6 +77,11 @@ const routes: Routes = [
     path: 'addfoodadmin',
     component: AddfoodadminComponent
   },
+  {
+    path: 'food',
+    component: FoodComponent
+  },
+
   
 ];
 @NgModule({

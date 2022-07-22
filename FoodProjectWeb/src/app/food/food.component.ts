@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Food } from '../models/Food';
 import { Router } from '@angular/router';
-import { ProductService } from '../services/product.service';
-import { CartService } from '../services/cart.service';
 import { foodadmin } from '../models/foodadmin';
-@Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
-})
-export class HomeComponent implements OnInit {
+import { CartService } from '../services/cart.service';
+import { ProductService } from '../services/product.service';
 
+@Component({
+  selector: 'app-food',
+  templateUrl: './food.component.html',
+  styleUrls: ['./food.component.css']
+})
+export class FoodComponent implements OnInit {
+
+  
   searchKey:string ="";
   constructor(private _productservice: ProductService,private _router:Router,private _cartservice:CartService) { }
  
@@ -29,7 +30,7 @@ export class HomeComponent implements OnInit {
   
     buy(item: any){
       this._cartservice.addtoCart(item);
-   // this._router.navigate(['/cart']);
+      //this._router.navigate(['/login']);
   }
   
   

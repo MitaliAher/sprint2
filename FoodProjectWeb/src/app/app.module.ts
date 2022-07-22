@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import { AuthService } from './services/auth.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -20,6 +20,8 @@ import { FinalorderComponent } from './finalorder/finalorder.component';
 import { AdashboardComponent } from './adashboard/adashboard.component';
 import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
 import { AddfoodadminComponent } from './addfoodadmin/addfoodadmin.component';
+import { FoodComponent } from './food/food.component';
+import { MyorderComponent } from './myorder/myorder.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,12 +39,15 @@ import { AddfoodadminComponent } from './addfoodadmin/addfoodadmin.component';
     FinalorderComponent,
     AdashboardComponent,
     OrderdetailsComponent,
-    AddfoodadminComponent
+    AddfoodadminComponent,
+    FoodComponent,
+    MyorderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     
 

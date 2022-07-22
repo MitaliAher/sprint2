@@ -1,3 +1,6 @@
+<p>food works!</p>
+
+
 <div class="row mt-5" style="background-color:rgb(143, 121, 121);" >
     <div class="col-md-4 mb-3" *ngFor="let product of products | filter:searchKey:'restaurantName'">
          <div class="card" style="width: 18rem;" style="background-color:rgb(240, 235, 235);">
@@ -7,7 +10,7 @@
                  <h5 class="card-title">{{product.foodName}}</h5>
                  <p class="card-text">{{product.foodDescription}}</p>
                  <p class="card-text">{{product.foodPrice |currency:'₹'}}</p>
-                 <a  class="btn btn-primary" (click)="buy(product)" routerLink="/login">Add to cart</a>
+                 <a  class="btn btn-primary" (click)="buy(product)" routerLink="/cart">Add to cart</a>
              </div>
          </div>
      </div>
