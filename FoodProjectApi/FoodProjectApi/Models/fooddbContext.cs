@@ -19,6 +19,7 @@ namespace FoodProjectApi.Models
 
         public virtual DbSet<FoodDetail> FoodDetails { get; set; }
         public virtual DbSet<FoodDetailsAdmin> FoodDetailsAdmins { get; set; }
+        public virtual DbSet<Myorder> Myorders { get; set; }
         public virtual DbSet<OrderTbl> OrderTbls { get; set; }
         public virtual DbSet<RegisterTbl> RegisterTbls { get; set; }
 
@@ -121,6 +122,25 @@ namespace FoodProjectApi.Models
                     .HasColumnName("restaurantName");
             });
 
+            modelBuilder.Entity<Myorder>(entity =>
+            {
+                entity.ToTable("myorder");
+
+                entity.Property(e => e.FoodFinal)
+                    .HasColumnType("decimal(18, 2)")
+                    .HasColumnName("foodFinal");
+
+                entity.Property(e => e.FoodImage)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("foodImage");
+
+                entity.Property(e => e.FoodName)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("foodName");
+            });
+
             modelBuilder.Entity<OrderTbl>(entity =>
             {
                 entity.ToTable("OrderTbl");
@@ -151,6 +171,8 @@ namespace FoodProjectApi.Models
                 entity.Property(e => e.PhoneNo)
                     .HasMaxLength(10)
                     .IsUnicode(false);
+
+                entity.Property(e => e.UserName).HasMaxLength(50);
             });
 
             modelBuilder.Entity<RegisterTbl>(entity =>

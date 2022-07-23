@@ -6,23 +6,28 @@ import { Router } from '@angular/router';
 export class AuthService {
   private _registerUrl = "https://localhost:44360/api/Login/register";
   private _loginUrl = "https://localhost:44360/api/Login/login";
+  private _userUrl = "https://localhost:44360/api/Login";
 
-  constructor(private http: HttpClient,private _router:Router) { }
+  constructor(private http: HttpClient, private _router: Router) { }
 
   registerUser(user: any) {
     return this.http.post<any>(this._registerUrl, user);
   }
-  
+
   loginUser(user: any) {
     return this.http.post<any>(this._loginUrl, user);
   }
-  loggedIn()
-  {
+  loggedIn() {
     return !!localStorage.getItem('token')
   }
-  logoutUser(){
+  logoutUser() {
     localStorage.removeItem('token');
     this._router.navigate(['/home']);
   }
-
+  getUsers() {
+    return this.http.get<any>(this._userUrl);
+  }
+  getToken() {
+    return localStorage.getItem('token');
+  }
 }

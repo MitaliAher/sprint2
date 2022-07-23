@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import { AuthService } from './services/auth.service';
@@ -21,7 +21,9 @@ import { AdashboardComponent } from './adashboard/adashboard.component';
 import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
 import { AddfoodadminComponent } from './addfoodadmin/addfoodadmin.component';
 import { FoodComponent } from './food/food.component';
-import { MyorderComponent } from './myorder/myorder.component';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { MyOrderComponent } from './my-order/my-order.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,8 @@ import { MyorderComponent } from './myorder/myorder.component';
     OrderdetailsComponent,
     AddfoodadminComponent,
     FoodComponent,
-    MyorderComponent
+    UserDetailsComponent,
+    MyOrderComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,10 @@ import { MyorderComponent } from './myorder/myorder.component';
 
   ],
  
-  providers: [AuthService],
-  bootstrap: [AppComponent]
+  providers: [AuthService,{provide:JWT_OPTIONS,useValue:JWT_OPTIONS},JwtHelperService],
+  bootstrap: [AppComponent],
+  schemas: [
+    NO_ERRORS_SCHEMA
+  ]
 })
 export class AppModule { }

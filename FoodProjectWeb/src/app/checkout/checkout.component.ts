@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { order } from '../models/order';
 import { ProductService } from '../services/product.service';
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { AdddetailService } from '../services/AdddetailService .service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-checkout',
@@ -12,9 +15,12 @@ import { Injectable } from '@angular/core';
 })
 export class CheckoutComponent implements OnInit {
 
-  constructor(public httpc: HttpClient, private _foodservice: ProductService, private _router: Router) { }
+  constructor(public httpc: HttpClient, private _foodservice: ProductService, private _router: Router,private jwt:JwtHelperService,private _detail: AdddetailService,private _auth:AuthService) { }
 
+  username:string='';
   ngOnInit(): void {
+    this.username=this.jwt.decodeToken(this._auth.getToken()?.toString())?.unique_name;
+
   }
 
   addfood: order = new order();
