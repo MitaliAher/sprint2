@@ -30,7 +30,16 @@ export class RegisterComponent implements OnInit {
   HideSpinner() {
     this.showSpinner = false;
   }
+  flagRestaurant(event: any) {
+    if (event.target.value == 'User') {
+      this.registerUserData.isRestaurant = 0;
+    } else {
+      this.registerUserData.isRestaurant = 1;
+    }
+
+  }
   registerUser() {
+    
 
     if (this.registerUserData.userName == '' || this.registerUserData.password == '') {
       this.DisplayModalPopup("Error", "Please enter the username and password");

@@ -36,8 +36,10 @@ namespace FoodProjectApi.ViewModels
                 tblLogin.PhoneNo = registerViewModel.PhoneNo;
                 tblLogin.Email = registerViewModel.Email;
                 tblLogin.Address = registerViewModel.Address;
+                tblLogin.IsRestaurant = registerViewModel.IsRestaurant;
                 db.RegisterTbls.Add(tblLogin);
                 db.SaveChanges();
+                _isRestaurant = Convert.ToBoolean(registerViewModel.IsRestaurant);
             }
             else if (db.RegisterTbls.Any(x => x.UserName == registerViewModel.UserName && x.Password == registerViewModel.Password && x.IsRestaurant == 1))
             {

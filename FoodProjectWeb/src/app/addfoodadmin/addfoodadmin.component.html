@@ -37,7 +37,11 @@
                 <td>{{item.foodMrp}}</td>
                 <td>{{item.foodDiscount}}</td>
                 <td>{{item.foodFinal}}</td>
-                <td><input  (click)="EditFood(item)" value="Approve"></td>
+               <!-- <td><input  (click)="EditFood(item)" value="Approve"></td>-->
+               <td>
+                <input type="button" [hidden]="(item.isApprove==1)?true:false" value="Add"  (click)="AddFood(item)" value="Approve"/>
+                <label [hidden]="(item.isApprove==1)?false:true" >Approved</label>
+            </td>
                 
                 <input type="button" value="Block"
 onClick="confirm( 'Product is blocked' )">

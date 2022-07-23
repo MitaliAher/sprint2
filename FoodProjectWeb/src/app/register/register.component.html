@@ -9,8 +9,21 @@
       <input type="password" name="loginPassword" id="loginPassword" [(ngModel)]="registerUserData.password" required />
       <label for="loginPassword">Password</label>
     </div>
+    <div class="mb-3">
+      <label class="form-label" for="pwd">User Type</label>
+      <select class="form-control" (change)="flagRestaurant($event)" name="selectuser" id="selectuser" [(ngModel)]="registerUserData.isRestaurant">
+        <option>Select</option>
+        <option>User</option>
+        <option>Restaurant</option>
+      </select>
+
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
     <input type="submit" value="Register" class="submit-btn" (click)="registerUser()" />
   </form>
+
+
 </div>
 
 <div *ngIf="showSpinner" id="cover-spin">

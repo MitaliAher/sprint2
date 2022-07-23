@@ -38,7 +38,8 @@ export class CheckoutComponent implements OnInit {
       
       PhoneNo: this.addfood.phoneNo,
       Address: this.addfood.address,
-      paymentmode:this.addfood.paymentmode
+      paymentmode:this.addfood.paymentmode,
+      username:this.username
     }
 
     this.httpc.post("https://localhost:44360/api/Order", addo).subscribe(res => this.PostSuccess(res), res => this.PostError(res));

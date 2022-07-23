@@ -12,5 +12,6 @@ namespace FoodProjectApi.ViewModels
         public string Address { get; set; }
         public int? PhoneNo { get; set; }
         public string Email { get; set; }
+        public int? IsRestaurant { get; set; }
     }
 }

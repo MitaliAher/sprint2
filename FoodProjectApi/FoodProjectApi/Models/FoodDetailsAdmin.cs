@@ -17,5 +17,6 @@ namespace FoodProjectApi.Models
         public decimal? FoodDiscount { get; set; }
         public decimal? FoodFinal { get; set; }
         public int? FoodQuantity { get; set; }
+        public int? IsApprove { get; set; }
     }
 }

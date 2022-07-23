@@ -4,6 +4,7 @@ export class UserData{
     UserID:number=0;
     userName:string='';
     password:string='';
+    isRestaurant:number=0;
     formLoginGroup:FormGroup;
     constructor(){
         var _builder=new FormBuilder();

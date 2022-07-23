@@ -25,9 +25,9 @@ export class LoginComponent implements OnInit {
     this._auth.loginUser(userDataObject).subscribe(res => {
       localStorage.setItem('token', res.token);
       if (res.isAdmin)
-        this._router.navigate(['/dashboard']);
-      else if (res.isRestaurant)
         this._router.navigate(['/adashboard']);
+      else if (res.isRestaurant)
+        this._router.navigate(['/dashboard']);
       else
         this._router.navigate(['/home']);
     }, err => console.log(err));

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FoodProjectApi.Models;
+using FoodProjectApi.ViewModels;
 
 namespace FoodProjectApi.Controllers
 {
@@ -25,16 +26,32 @@ namespace FoodProjectApi.Controllers
         [HttpPost]
         public string Post([FromBody] FoodDetail food)
         {
-            if (food.IsActive == 1)
-            {
-                db.SaveChanges();
-            }
-            else
-                return "not available";
+            //if (food.IsActive == 1)
+            //{
+            //    db.SaveChanges();
+            //}
+            //else
+            //    return "not available";
             db.FoodDetails.Add(food);
             db.SaveChanges();
             return "success";
         }
+
+        //[HttpPost]
+        //[Route("ApproveFood")]
+        //public IActionResult ApproveProperty([FromBody] ApproveViewModel approveViewModel)
+        //{
+        //    var data = db.FoodDetailsAdmins.Where(x => x.Id == approveViewModel.Id).FirstOrDefault();
+        //    data.IsApprove = 1;
+        //    db.FoodDetailsAdmins.Update(data);
+        //    db.SaveChanges();
+        //    var tblfood = new FoodDetailsAdmin();
+        //    tblfood.FoodDescription = data.FoodDescription;
+        //    tblfood.FoodName = data.FoodName;
+        //    db.FoodDetailsAdmins.Add(tblfood);
+        //    db.SaveChanges();
+        //    return Ok();
+        //}
         [HttpPut]
         public string Put([FromBody] FoodDetail food)
         {

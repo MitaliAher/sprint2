@@ -9,6 +9,6 @@ export class foodadmin{
     foodDescription:string=''
     foodImage:string='';
     foodFinal:number=0;
-    
+    isApprove:number=0;
 
 }
