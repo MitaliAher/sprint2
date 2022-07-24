@@ -1,121 +1,44 @@
-<!DOCTYPE html>
 <html>
-<style>
-    table,
-    th,
-    td {
-        border: 2px solid black;
-    }
-</style>
-
-<body>
-    
-    <div class="column">
-
-        <table border="2">
-            
-            <input type="button" (click)="Show()" value="Show" />
-            
-            <tr style="background-color:grey">
-                <td style="padding: 10px;">Restaurant Name</td>
-                <td style="padding:10px;"> Food Name</td>
-                <td style="padding: 10px;"> Description</td>
-                <td style="padding: 10px;">Place</td>
-                <td style="padding: 10px;"> Image</td>
-                <td style="padding: 10px;"> Price</td>
-                <td style="padding: 10px;"> Discount</td>
-                <td style="padding: 10px;"> Final</td>
-                
-
-            </tr>
-            <tr *ngFor="let item of addfoods" style="background-color: lightgrey;">
-                <td>{{item.restaurantName}}</td>
-                <td>{{item.foodName}}</td>
-                <td>{{item.foodDescription}}</td>
-                <td>{{item.place}}</td>
-                <td>{{item.foodImage}}</td>
-                <td>{{item.foodMrp}}</td>
-                <td>{{item.foodDiscount}}</td>
-                <td>{{item.foodFinal}}</td>
-               <!-- <td><input  (click)="EditFood(item)" value="Approve"></td>-->
-               <td>
-                <input type="button" [hidden]="(item.isApprove==1)?true:false" value="Add"  (click)="AddFood(item)" value="Approve"/>
-                <label [hidden]="(item.isApprove==1)?false:true" >Approved</label>
-            </td>
-                
-                <input type="button" value="Block"
-onClick="confirm( 'Product is blocked' )">
-                
-            </tr>
-        </table>
-    </div>
-    <div class="row" style="padding: top;">
+    <body>
         <div class="column">
-            <table>
-                <tr>
-                    <td>Restaurant Name</td>
-                    <td>
-                        <input [(ngModel)]="addfood.restaurantName" type="text">
-                    </td>
-                </tr>
-                <tr>
-                    <td> Food Name</td>
-                    <td>
-                        <input [(ngModel)]="addfood.foodName" type="text">
-                    </td>
-                </tr>
-                <tr>
-                    <td> Description</td>
-                    <td>
-                        <input [(ngModel)]="addfood.foodDescription" type="text">
-                    </td>
-                </tr>
-                <tr>
-                    <td> Place</td>
-                    <td>
-                        <input [(ngModel)]="addfood.place" type="text">
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td> Image</td>
-                    <td>
-                        <input [(ngModel)]="addfood.foodImage" type="text">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Food Mrp</td>
-                    <td>
-                        <input [(ngModel)]="addfood.foodMrp" type="text">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Food Discount</td>
-                    <td>
-                        <input [(ngModel)]="addfood.foodDiscount" type="text">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Food Final</td>
-                    <td>
-                        <input [(ngModel)]="addfood.foodFinal" type="text">
-                    </td>
-                </tr>
-                <input type="submit" (click)="AddFood()">
-                
-            
-        
 
+            <table border="2">
                 
+                <input type="button" (click)="Show()" value="Show" />
                 
+                <tr style="background-color:grey">
+                    <td style="padding: 10px;">Restaurant Name</td>
+                    <td style="padding:10px;"> Food Name</td>
+                    <td style="padding: 10px;"> Description</td>
+                    <td style="padding: 10px;">Place</td>
+                    <td style="padding: 10px;"> Image</td>
+                    <td style="padding: 10px;"> Price</td>
+                    <td style="padding: 10px;"> Discount</td>
+                    <td style="padding: 10px;"> Final</td>
+                    <td style="padding: 10px;"> Quantity</td>
+                    <td style="padding: 10px;"> Action</td>
+
+                </tr>
+                <tr *ngFor="let item of addfoods" style="background-color: lightgrey;">
+                    <td>{{item.restaurantName}}</td>
+                    <td>{{item.foodName}}</td>
+                    <td>{{item.foodDescription}}</td>
+                    <td>{{item.place}}</td>
+                    <td>{{item.foodImage}}</td>
+                    <td>{{item.foodMrp}}</td>
+                    <td>{{item.foodDiscount}}</td>
+                    <td>{{item.foodFinal}}</td>
+                    <td>{{item.foodQuantity}}</td>
+                    <!--<td><input  type="button" (click)="EditFood(item)" value="Approve"></td>
+                    <input type="button" value="Delete" (click)="DeleteCustomer(item)" />-->
+                    <td>
+                        <input type="button" [hidden]="(item.IsActive==1)?true:false" value="Add"  (click)="AddFood(item)" value="Approve"/>
+                        <label [hidden]="(item.IsActive==1)?false:true" >Approved</label>
+                    </td>
+                </tr>
             </table>
         </div>
-
-
-
-
-
-    </div>
+    
     <li class="nav-item">
         <a class="nav-link"  routerLink="/adashboard">Go Back</a>
       </li>

@@ -11,12 +11,12 @@
     </div>
     <div class="mb-3">
       <label class="form-label" for="pwd">User Type</label>
-      <select class="form-control" (change)="flagRestaurant($event)" name="selectuser" id="selectuser" [(ngModel)]="registerUserData.isRestaurant">
+      <select class="form-control" (change)="flagRestaurant($event)" name="selectuser" id="selectuser"
+        [(ngModel)]="registerUserData.isRestaurant">
         <option>Select</option>
         <option>User</option>
         <option>Restaurant</option>
       </select>
-
       <div class="valid-feedback">Valid.</div>
       <div class="invalid-feedback">Please fill out this field.</div>
     </div>

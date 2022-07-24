@@ -31,18 +31,41 @@ namespace FoodProjectApi.Controllers
             db.SaveChanges();
             return "success";
         }
+        //[HttpPost]
+        //[Route("ApproveFood")]
+        //public IActionResult ApproveProperty([FromBody] ApproveViewModel approveViewModel)
+        //{
+        //    var data = db.FoodDetailsAdmins.Where(x => x.Id == approveViewModel.Id).FirstOrDefault();
+        //    data.IsApprove = 1;
+        //    db.FoodDetailsAdmins.Update(data);
+        //    db.SaveChanges();
+        //    var tblfood = new FoodDetailsAdmin();
+        //    tblfood.FoodDescription = data.FoodDescription;
+        //    tblfood.FoodName = data.FoodName;
+        //    db.FoodDetailsAdmins.Add(tblfood);
+        //    db.SaveChanges();
+        //    return Ok();
+        //}
         [HttpPost]
-        [Route("ApproveFood")]
+        [Route("ApproveProperty")]
         public IActionResult ApproveProperty([FromBody] ApproveViewModel approveViewModel)
         {
-            var data = db.FoodDetailsAdmins.Where(x => x.Id == approveViewModel.Id).FirstOrDefault();
-            data.IsApprove = 1;
-            db.FoodDetailsAdmins.Update(data);
+            var data = db.FoodDetails.Where(x => x.Id == approveViewModel.Id).FirstOrDefault();
+            data.IsActive = 1;
+            db.FoodDetails.Update(data);
             db.SaveChanges();
-            var tblfood = new FoodDetailsAdmin();
-            tblfood.FoodDescription = data.FoodDescription;
-            tblfood.FoodName = data.FoodName;
-            db.FoodDetailsAdmins.Add(tblfood);
+            var tbl = new FoodDetailsAdmin();
+            tbl.RestaurantName = data.RestaurantName;
+            tbl.FoodImage = data.FoodImage;
+            tbl.FoodMrp = data.FoodMrp;
+            tbl.FoodFinal = data.FoodFinal;
+            tbl.Place = data.Place;
+            tbl.FoodQuantity = data.FoodQuantity;
+            tbl.FoodDescription = data.FoodDescription;
+            tbl.FoodName = data.FoodName;
+            tbl.IsActive = data.IsActive;
+            tbl.FoodDiscount = data.FoodDiscount;
+            db.FoodDetailsAdmins.Add(tbl);
             db.SaveChanges();
             return Ok();
         }

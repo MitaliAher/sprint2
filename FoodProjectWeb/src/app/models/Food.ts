@@ -10,5 +10,7 @@ export class Food{
     foodImage:string='';
     foodFinal:number=0;
     IsActive:number=0;
+    isApprove:number=0;
+    //foodImage:string='';
 
 }

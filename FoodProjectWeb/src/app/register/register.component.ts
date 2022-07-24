@@ -40,6 +40,21 @@ export class RegisterComponent implements OnInit {
   }
   registerUser() {
     
+    console.log(this.registerUserData);
+    this._auth.registerUser(this.registerUserData).subscribe(res => {
+      localStorage.setItem('token',res.token);
+      console.log(res);
+      if (res.isAdmin)
+             this._router.navigate(['/adashboard']); 
+
+      else if (res.isRestaurant)
+             this._router.navigate(['/dashboard']);    
+
+        else 
+        this._router.navigate(['/home']);
+    },
+      err => console.log(err));
+  
 
     if (this.registerUserData.userName == '' || this.registerUserData.password == '') {
       this.DisplayModalPopup("Error", "Please enter the username and password");

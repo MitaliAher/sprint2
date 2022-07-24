@@ -11,23 +11,25 @@ import { Injectable } from '@angular/core';
   styleUrls: ['./addfood.component.css']
 })
 export class AddfoodComponent implements OnInit {
+  isEdit: any;
 
   constructor(public httpc: HttpClient, private _foodservice: ProductService, private _router: Router) { }
-
+  files = [];
   ngOnInit(): void {
   }
 
   addfood: Food = new Food();
   addfoods: Array<Food> = new Array<Food>();
+  img: any;
 
   AddFood() {
     console.log(this.addfood)
 
     var addo = {
-      
+
       foodName: this.addfood.foodName,
-      place:this.addfood.place,
-      restaurantName:this.addfood.restaurantName,
+      place: this.addfood.place,
+      restaurantName: this.addfood.restaurantName,
       foodDescription: this.addfood.foodDescription,
       foodFinal: Number(this.addfood.foodFinal),
       foodMrp: Number(this.addfood.foodMrp),
@@ -39,7 +41,22 @@ export class AddfoodComponent implements OnInit {
     this.httpc.post("https://localhost:44360/api/Food", addo).subscribe(res => this.PostSuccess(res), res => this.PostError(res));
     this.addfood = new Food();
 
+    //if (this.isEdit) {
+     // this.httpc.put("https://localhost:44343/api/Tweet", addo).subscribe(res => this.PostSuccess(res), res => this.PostError(res));
+    //}
+    //else 
+    {
+    let filetoUpload=<File>this.files[0];
+    const formData=new FormData();
+    formData.append('file',filetoUpload,filetoUpload.name)
+    this.httpc.post("https://localhost:44360/api/Upload",formData).subscribe(res=>{console.log(res); this.img=res;addo.foodImage=this.img.imageUrl;this.AddFood();},res=>console.log(res));
+   
+    }
 
+  }
+
+  onFileChanged(event: any) {
+    this.files = event.target.files;
   }
 
   PostSuccess(res: any) {
@@ -61,16 +78,20 @@ export class AddfoodComponent implements OnInit {
     console.log(input);
   }
 
-  uploadFile=(files:any)=>{
+  /*uploadFile = (files: any) => {
     console.log("Hi");
-    
-    if(files.length==0){
+
+    if (files.length == 0) {
       return;
     }
-    let filetoUpload=<File>files[0];
-    const formData=new FormData();
-    formData.append('file',filetoUpload,filetoUpload.name)
-    this.httpc.post("https://localhost:44338/api/upload",formData).subscribe(res=>console.log(res),res=>console.log(res));
+    
+    let filetoUpload = <File>files[0];
+    const formData = new FormData();
+    formData.append('file', filetoUpload, filetoUpload.name)
+    this.httpc.post("https://localhost:44360/api/upload", formData).subscribe(res=>{console.log(res); this.img=res;addo.foodImage=this.img.imageUrl;this.AddFood(addo);},res=>console.log(res));
   }
+  onFileChanged(event: any) {
+    this.files = event.target.files;
+  }*/
 
 }

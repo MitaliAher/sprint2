@@ -39,8 +39,11 @@
                 
                 <tr>
                     <td> Image</td>
-                    <td>
+                    <!--<td>
                         <input [(ngModel)]="addfood.foodImage" type="text">
+                    </td>-->
+                    <td>
+                        <input type="file" (change)="onFileChanged($event)" [(ngModel)]="addfood.foodImage" />
                     </td>
                 </tr>
                 <tr>
@@ -99,7 +102,8 @@
                     <td>{{item.foodName}}</td>
                     <td>{{item.foodDescription}}</td>
                     <td>{{item.place}}</td>
-                    <td>{{item.foodImage}}</td>
+                    <!--<td>{{item.foodImage}}</td>-->
+                    <td><img src="{{item.foodImage}}" height="10%" width="10%"/></td>
                     <td>{{item.foodMrp}}</td>
                     <td>{{item.foodDiscount}}</td>
                     <td>{{item.foodFinal}}</td>
@@ -115,12 +119,12 @@
 
 </html>
 
-<div class="container">
+<!--<div class="container">
     <div class="row" style="margin-bottom:15px;margin:10px">
       <div class="col-md-3">
         <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none" />
         <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
       </div>
     </div>
-   <!-- <img src="https://fileupload1.blob.core.windows.net/img/johari.jpg" />-->
-  </div>
+    <img src="https://fileupload1.blob.core.windows.net/img/johari.jpg" />
+  </div>-->
